@@ -8,24 +8,25 @@ public class Main {
 	// write your code here
         String pathOfFiles = null;
         Scanner sc = new Scanner(System.in);
-        // GUI.guiLaunch();
+        GUI.guiLaunch();
         System.out.println("Podaj sciezke: ");
-        pathOfFiles = sc.next();
-       // try {
+        pathOfFiles = sc.nextLine();
+        try {
             File folder = new File(pathOfFiles);
             File[] listOfFiles = folder.listFiles();
 
             for (File fileFromList: listOfFiles) {
                 if (fileFromList.isFile()) {
-                    System.out.println("File " + fileFromList.getName());
+                    System.out.println("Plik " + fileFromList.getName());
                 } else if (fileFromList.isDirectory()) {
-                    System.out.println("Directory " + fileFromList.getName());
+                    System.out.println("Folder " + fileFromList.getName());
                 }
             }
-        // }
-        /* catch (Exception NullPointerException)
+        }
+         catch (NullPointerException e)
         {
-            System.out.println("niezydentyfikowany błąd");
-        } */
+            System.out.println("błąd - spacje / specjalne znaki w nazwie ścieżki");
+            e.printStackTrace();
+        }
     }
 }
